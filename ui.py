@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tareas import agregar_estado, marcar_completado
 
-# Colores
 COLOR_FONDO = "#e8f0fe"
 COLOR_LISTA = "#ffffff"
 COLOR_COMPLETADO_BG = "#d4edda"
@@ -29,7 +28,6 @@ class ListaDeTareasApp:
         self.style.configure("TLabel", background=COLOR_FONDO, foreground=COLOR_TEXTO)
 
     def _crear_widgets(self):
-        # Botones
         button_frame = ttk.Frame(self.root)
         button_frame.pack(pady=15)
 
@@ -37,7 +35,6 @@ class ListaDeTareasApp:
         ttk.Button(button_frame, text="🗑️ Eliminar", command=self.eliminar_tarea).pack(side=tk.LEFT, padx=5)
         ttk.Button(button_frame, text="✅ Completado", command=self.marcar_completado).pack(side=tk.LEFT, padx=5)
 
-        # Lista de tareas
         list_frame = ttk.Frame(self.root)
         list_frame.pack(pady=10, fill=tk.BOTH, expand=True)
 
@@ -97,7 +94,7 @@ class ListaDeTareasApp:
             self.lista_tareas.delete(index)
             self.lista_tareas.insert(index, nueva)
 
-            # Cambia colores según el emoji
+            
             if nueva.startswith("✅"):
                 self.lista_tareas.itemconfig(index, {'bg': COLOR_COMPLETADO_BG, 'fg': COLOR_COMPLETADO_TXT})
             else:
